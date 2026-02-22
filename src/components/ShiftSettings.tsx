@@ -77,8 +77,8 @@ export default function ShiftSettings({ config, onSaved }: ShiftSettingsProps) {
                                 key={d.value}
                                 onClick={() => toggleDay(d.value)}
                                 className={`w-9 h-9 rounded-lg flex items-center justify-center text-xs font-bold transition-all border ${localConfig.workingDays.includes(d.value)
-                                        ? 'bg-indigo-600 border-indigo-500 text-white shadow-lg shadow-indigo-900/20'
-                                        : 'bg-slate-800 border-slate-700 text-slate-500 hover:border-slate-600'
+                                    ? 'bg-indigo-600 border-indigo-500 text-white shadow-lg shadow-indigo-900/20'
+                                    : 'bg-slate-800 border-slate-700 text-slate-500 hover:border-slate-600'
                                     }`}
                             >
                                 {d.label}
@@ -112,6 +112,15 @@ export default function ShiftSettings({ config, onSaved }: ShiftSettingsProps) {
                                         type="checkbox"
                                         checked={localConfig.arrivalReminderEnabled}
                                         onChange={(e) => setLocalConfig({ ...localConfig, arrivalReminderEnabled: e.target.checked })}
+                                        className="accent-indigo-500"
+                                    />
+                                </div>
+                                <div className="flex items-center justify-between">
+                                    <span className="text-xs text-slate-400">Geofence Transitions</span>
+                                    <input
+                                        type="checkbox"
+                                        checked={localConfig.geofenceTransitionNotificationsEnabled}
+                                        onChange={(e) => setLocalConfig({ ...localConfig, geofenceTransitionNotificationsEnabled: e.target.checked })}
                                         className="accent-indigo-500"
                                     />
                                 </div>

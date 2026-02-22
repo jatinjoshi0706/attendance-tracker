@@ -4,6 +4,7 @@ export interface ShiftConfig {
     halfDayThresholdMinutes: number;
     notificationsEnabled: boolean;
     arrivalReminderEnabled: boolean;
+    geofenceTransitionNotificationsEnabled: boolean;
     endOfDayReminderEnabled: boolean;
     endOfDayReminderTime: string; // "HH:mm"
 }
@@ -16,6 +17,7 @@ const DEFAULT_SETTINGS: ShiftConfig = {
     halfDayThresholdMinutes: 4 * 60,
     notificationsEnabled: false,
     arrivalReminderEnabled: true,
+    geofenceTransitionNotificationsEnabled: true,
     endOfDayReminderEnabled: true,
     endOfDayReminderTime: '18:00',
 };

@@ -63,15 +63,28 @@ export default function DashboardPage() {
 
   // ── Geofence ──
   const handleLeave = useCallback(() => {
+    if (config.notificationsEnabled && config.geofenceTransitionNotificationsEnabled) {
+      new Notification('🚶 Leaving Office', {
+        body: "You've moved outside the office geofence.",
+        icon: '/favicon.ico',
+      });
+    }
+
     if (!inside || alertCooldownRef.current) return;
     alertCooldownRef.current = true;
     setShowAlert(true);
     setTimeout(() => { alertCooldownRef.current = false; }, 10 * 60 * 1000);
-  }, [inside]);
+  }, [inside, config]);
 
   const handleReturn = useCallback(() => {
+    if (config.notificationsEnabled && config.geofenceTransitionNotificationsEnabled) {
+      new Notification('🏢 Back at Office', {
+        body: "You've returned to the office geofence.",
+        icon: '/favicon.ico',
+      });
+    }
     setShowAlert(false);
-  }, []);
+  }, [config]);
 
   const { status: geoStatus, distanceMetres } = useGeofence({
     office,
